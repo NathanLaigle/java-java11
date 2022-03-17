@@ -23,7 +23,7 @@ public class Stream_01_Test {
 		List<Pizza> pizzas = new Data().getPizzas();
 
 		// TODO récupérer la liste des pizzas dont le prix est >= 1300
-		List<Pizza> result = null;
+		List<Pizza> result = pizzas.stream().filter(p -> p.getPrice() >= 1300).collect(Collectors.toList());
 
 		assertThat(result, hasSize(3));
 		assertThat(result, everyItem(hasProperty("price", anyOf(equalTo(1300), greaterThan(1300)))));
@@ -34,7 +34,7 @@ public class Stream_01_Test {
 		List<Pizza> pizzas = new Data().getPizzas();
 
 		// TODO compter le nombre de pizzas dont le prix est >= 1300
-		long result = 0L;
+		long result = pizzas.stream().filter(p -> p.getPrice() >= 300).collect(Collectors.toList()).size();
 
 		assertThat(result, is(3L));
 	}
